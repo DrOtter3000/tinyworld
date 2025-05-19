@@ -1,17 +1,26 @@
 extends CharacterBody3D
 
+#Movement
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var camera_position: Vector3 = camera_3d.position
 @export var mouse_sensetivity := .075
 @export var speed := 15
 
-
+#Cambob
 var _delta := 0.0
 var direction := Vector3.ZERO
 @export var cambob_speed := 5.0
 @export var cambob_speed_in_no_motion := cambob_speed/5
 @export var cambob_area := .25
 @export var cambob_area_in_no_motion = cambob_area/2
+
+#Footsteps
+@onready var last_pos: Vector3 = global_position
+@export var step_after_dist := 7.5
+var dist_travelled_since_last_step := 0.0
+@onready var step_player: AudioStreamPlayer = $StepPlayer
+var wooden_plank_audio := [preload("res://Audio/SFX/Footsteps/Wood/Planks_1.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_2.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_3.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_4.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_5.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_6.wav")]
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -28,6 +37,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
+	
+	play_step_sound()
 
 
 func _process(delta: float) -> void:
@@ -54,3 +65,17 @@ func cam_bob(delta: float) -> void:
 		cambob_cam = camera_position + Vector3.UP * sin(cam_bob) * cambob_area_in_no_motion
 
 	camera_3d.position = camera_3d.position.lerp(cambob_cam, delta)
+
+
+func play_step_sound() -> void:
+	if is_on_floor():
+		dist_travelled_since_last_step = 0.0
+	
+	dist_travelled_since_last_step += global_position.distance_to(last_pos)
+	if dist_travelled_since_last_step >= step_after_dist:
+		dist_travelled_since_last_step = 0.0
+		step_player.stream = wooden_plank_audio.pick_random()
+		step_player.pitch_scale = randf_range(.9, 1.1)
+		step_player.play()
+	
+	last_pos = global_position

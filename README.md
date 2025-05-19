@@ -6,4 +6,5 @@ After two days thinking about the game I could make in this 10 days, I decided n
 
 ## Technology
 - Godot Game Engine 4.4
+- Audacity 3.7
 - Blender 4.4
