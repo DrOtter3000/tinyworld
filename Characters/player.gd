@@ -21,12 +21,17 @@ var dist_travelled_since_last_step := 0.0
 @onready var step_player: AudioStreamPlayer = $StepPlayer
 var wooden_plank_audio := [preload("res://Audio/SFX/Footsteps/Wood/Planks_1.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_2.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_3.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_4.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_5.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_6.wav")]
 
+#Interactions
+@onready var interaction_ray_cast: RayCast3D = $Camera3D/InteractionRayCast
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -36,13 +41,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
-	move_and_slide()
-	
 	play_step_sound()
+	move_and_slide()
 
 
 func _process(delta: float) -> void:
 	cam_bob(delta)
+	if Input.is_action_just_pressed("interact"):
+		var interactor = interaction_ray_cast.get_collider()
+		if interactor != null and interactor.has_method("use"):
+			print(interactor)
 
 
 func _input(event: InputEvent) -> void:
@@ -68,7 +76,7 @@ func cam_bob(delta: float) -> void:
 
 
 func play_step_sound() -> void:
-	if is_on_floor():
+	if not is_on_floor():
 		dist_travelled_since_last_step = 0.0
 	
 	dist_travelled_since_last_step += global_position.distance_to(last_pos)
