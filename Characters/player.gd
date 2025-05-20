@@ -16,7 +16,7 @@ var direction := Vector3.ZERO
 
 #Footsteps
 @onready var last_pos: Vector3 = global_position
-@export var step_after_dist := 7.5
+@export var step_after_dist := 2
 var dist_travelled_since_last_step := 0.0
 @onready var step_player: AudioStreamPlayer = $StepPlayer
 var wooden_plank_audio := [preload("res://Audio/SFX/Footsteps/Wood/Planks_1.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_2.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_3.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_4.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_5.wav"), preload("res://Audio/SFX/Footsteps/Wood/Planks_6.wav")]

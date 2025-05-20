@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj27a34jqgkbj"]
+[gd_scene load_steps=5 format=3 uid="uid://cj27a34jqgkbj"]
 
 [ext_resource type="Script" uid="uid://disoro6jr3ie3" path="res://Characters/player.gd" id="1_5mj4t"]
+[ext_resource type="AudioStream" uid="uid://c0wvivbo11f8f" path="res://Audio/SFX/Footsteps/Wood/Planks_1.wav" id="2_eovys"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fplrd"]
 radius = 0.25
@@ -10,6 +11,7 @@ radius = 0.25
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_5mj4t")
+speed = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -28,3 +30,4 @@ target_position = Vector3(0, 0, -5)
 collide_with_areas = true
 
 [node name="StepPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eovys")
