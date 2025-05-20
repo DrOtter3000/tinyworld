@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj27a34jqgkbj"]
+[gd_scene load_steps=7 format=3 uid="uid://cj27a34jqgkbj"]
 
 [ext_resource type="Script" uid="uid://disoro6jr3ie3" path="res://Characters/player.gd" id="1_5mj4t"]
 [ext_resource type="AudioStream" uid="uid://c0wvivbo11f8f" path="res://Audio/SFX/Footsteps/Wood/Planks_1.wav" id="2_eovys"]
+[ext_resource type="Shader" uid="uid://78usfn0v7bm5" path="res://Materials/Shaders/VHS_Shader.gdshader" id="3_vb825"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fplrd"]
 radius = 0.25
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t5trs"]
 radius = 0.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65n15"]
+shader = ExtResource("3_vb825")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.05
+shader_parameter/colorOffsetIntensity = 0.13
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_5mj4t")
@@ -45,3 +54,11 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Interact"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_65n15")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
