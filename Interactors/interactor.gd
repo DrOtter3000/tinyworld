@@ -3,4 +3,4 @@ class_name Interactor
 
 
 func use() -> void:
-	print("used")
+	pass

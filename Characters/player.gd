@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		var interactor = interaction_ray_cast.get_collider()
 		if interactor != null and interactor.has_method("use"):
-			print(interactor)
+			interactor.use()
 
 
 func _input(event: InputEvent) -> void:

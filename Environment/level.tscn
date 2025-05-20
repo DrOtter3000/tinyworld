@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1yagd0dj8mbk"]
+[gd_scene load_steps=10 format=3 uid="uid://b1yagd0dj8mbk"]
 
 [ext_resource type="PackedScene" uid="uid://cj27a34jqgkbj" path="res://Characters/player.tscn" id="1_q5wpd"]
 [ext_resource type="Material" uid="uid://tp4lfv3s7071" path="res://Materials/asphalt.tres" id="1_t5trs"]
@@ -19,9 +19,6 @@ sdfgi_use_occlusion = true
 sdfgi_y_scale = 2
 glow_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_t5trs"]
-size = Vector3(1, 4, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ock7s"]
 albedo_color = Color(0.288518, 0.288518, 0.288518, 1)
 
@@ -36,10 +33,6 @@ data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0,
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fplrd")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 4)
-mesh = SubResource("BoxMesh_t5trs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 9.09627, 0)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://dewhr7yy6cq8n"]
+[gd_scene load_steps=32 format=3 uid="uid://dewhr7yy6cq8n"]
 
 [ext_resource type="Material" uid="uid://gotf24afn5kw" path="res://Materials/wooden_floor.tres" id="1_ctcyh"]
 [ext_resource type="Material" uid="uid://csmpo4fj53stp" path="res://Materials/oak.tres" id="2_ggyd1"]
 [ext_resource type="Material" uid="uid://ckkea78fmvlgc" path="res://Materials/concrete_wall.tres" id="3_au4l1"]
+[ext_resource type="PackedScene" uid="uid://bg3vy7nkfursq" path="res://Interactors/door.tscn" id="4_628ce"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ggyd1"]
 material = ExtResource("1_ctcyh")
@@ -258,3 +259,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 4)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Step"]
 transform = Transform3D(0.964109, 0.265506, 0, -0.265506, 0.964109, 0, 0, 0, 1, 0.106729, 0.0432157, 0)
 shape = SubResource("BoxShape3D_au4l1")
+
+[node name="Door" parent="." instance=ExtResource("4_628ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.1, 0)
+
+[node name="Door2" parent="." instance=ExtResource("4_628ce")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0.1, 4)
