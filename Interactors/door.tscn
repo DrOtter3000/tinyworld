@@ -172,6 +172,7 @@ _data = {
 
 [node name="Door" instance=ExtResource("1_2uf0a")]
 script = ExtResource("2_xbd1c")
+prompt = "open door"
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24989, 0)

@@ -23,6 +23,7 @@ var wooden_plank_audio := [preload("res://Audio/SFX/Footsteps/Wood/Planks_1.wav"
 
 #Interactions
 @onready var interaction_ray_cast: RayCast3D = $Camera3D/InteractionRayCast
+@onready var interaction_label: Label = $InteractionLabel
 
 
 func _ready() -> void:
@@ -47,10 +48,14 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	cam_bob(delta)
-	if Input.is_action_just_pressed("interact"):
-		var interactor = interaction_ray_cast.get_collider()
-		if interactor != null and interactor.has_method("use"):
+	var interactor = interaction_ray_cast.get_collider()
+	if interactor != null and interactor.has_method("use"):
+		interaction_label.text = "(E) " + interactor.prompt
+		if Input.is_action_just_pressed("interact"):
 			interactor.use()
+	else:
+		interaction_label.text = "."
+	
 
 
 func _input(event: InputEvent) -> void:
