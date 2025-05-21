@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://05wgb2xxx0m2"]
+
+[ext_resource type="PackedScene" uid="uid://bv0ng6yfdt6ng" path="res://Assets/Lamp_inside.glb" id="1_0q6p1"]
+
+[node name="LampInside" type="Node3D"]
+
+[node name="Lamp_inside" parent="." instance=ExtResource("1_0q6p1")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.187, 0)
+light_color = Color(1, 1, 0.541176, 1)
+light_energy = 0.7
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.187, 0)
+light_color = Color(1, 1, 0.541176, 1)
+light_energy = 0.7
+omni_range = 10.0

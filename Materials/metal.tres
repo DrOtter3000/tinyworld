@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b1h4q5b7lq02a"]
+
+[ext_resource type="Texture2D" uid="uid://cmglre8ibws37" path="res://Materials/Textures/spotted-rust_albedo_pixel.png" id="1_fau58"]
+
+[resource]
+albedo_texture = ExtResource("1_fau58")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true

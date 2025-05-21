@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://bg3vy7nkfursq"]
+[gd_scene load_steps=18 format=4 uid="uid://bg3vy7nkfursq"]
 
 [ext_resource type="PackedScene" uid="uid://dftcpy7ybbg3i" path="res://Interactors/interactor_template.tscn" id="1_2uf0a"]
 [ext_resource type="Script" uid="uid://bnrwoixbj33qj" path="res://Interactors/door.gd" id="2_xbd1c"]
 [ext_resource type="Material" uid="uid://csmpo4fj53stp" path="res://Materials/oak.tres" id="3_hgolb"]
+[ext_resource type="Material" uid="uid://b1h4q5b7lq02a" path="res://Materials/metal.tres" id="4_xbd1c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gm8lb"]
 size = Vector3(1, 2.5, 0.2)
@@ -194,6 +195,7 @@ skeleton = NodePath("")
 transform = Transform3D(0, 0, 0.227012, 0, -0.37082, 0, -0.069844, 0, 0, -1.5632, -0.210808, -0.040399)
 mesh = SubResource("ArrayMesh_8wo6o")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_xbd1c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door/DoorFrame/Door" index="1"]
 
