@@ -23,6 +23,10 @@ window/stretch/mode="viewport"
 
 import/blender/enabled=false
 
+[gui]
+
+theme/custom="uid://da703r1iycafq"
+
 [input]
 
 move_left={

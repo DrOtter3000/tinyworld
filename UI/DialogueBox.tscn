@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2uc8um1kgvx7"]
+
+[ext_resource type="Script" uid="uid://5xaft8xabfgi" path="res://UI/dialogue_box.gd" id="1_4i1j6"]
+[ext_resource type="Theme" uid="uid://da703r1iycafq" path="res://Themes/default_theme.tres" id="1_nkpxt"]
+
+[node name="ColorRect" type="ColorRect"]
+offset_left = 16.0
+offset_top = 384.0
+offset_right = 1136.0
+offset_bottom = 632.0
+color = Color(0.12549, 0.12549, 0.12549, 0.784314)
+script = ExtResource("1_4i1j6")
+
+[node name="NameLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_top = -32.0
+offset_right = 176.0
+offset_bottom = -9.0
+theme = ExtResource("1_nkpxt")
+text = "Customer"
+
+[node name="Text" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1112.0
+offset_bottom = 240.0
+text = "Lorem ipsum dolor amet"
+scroll_following = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(24, 0)
+polygon = PackedVector2Array(1040, 216, 1088, 216, 1064, 240)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="LetterSound" type="AudioStreamPlayer" parent="."]
